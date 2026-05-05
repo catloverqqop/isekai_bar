@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -8,10 +8,34 @@
 <body>
 <div class="image-container">
   <img src="beer.jpeg" alt="배경 이미지" class="bg-image" draggable="false">
-  
-  <a href="-" class="frog">
-  <img src="frog.svg" alt="효과 개구리" draggable="false">
-</a>
+
+  <img src="frog.svg" alt="효과 개구리" class="frog" draggable="false" onclick="startflyeffect()">
+
+  <img src="question.svg" alt="???" class="question" draggable="false">
+
 </div>
+
+<div id="fly-overlay">
+  <div class="fly"></div>
+  <div class="fly"></div>
+  <div class="fly"></div>
+  <div class="fly"></div>
+  <div class="fly"></div>
+  <div class="fly"></div>
+  <div class="fly"></div>
+  <div class="fly"></div>
+  <div class="fly"></div>
+  <div class="fly"></div>
+</div>
+
+<script>
+function startflyeffect() {
+    const overlay = document.getElementById('fly-overlay');
+    overlay.classList.add('active');
+    setTimeout(() => {
+        overlay.classList.remove('active');
+    }, 4000);
+}
+</script>
 </body>
 </html>
