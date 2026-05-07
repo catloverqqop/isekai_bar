@@ -75,22 +75,22 @@
 
 @keyframes fly-move-2 {
     from { transform: translate(0, 0); }
-    to { transform: translate(20px, -30px); }
+    to { transform: translate(800px, -900px); } 
 }
 
 @keyframes fly-move-3 {
     from { transform: translate(0, 0); }
-    to { transform: translate(-30px, 25px); }
+    to { transform: translate(-900px, 800px); } 
 }
 
 @keyframes fly-move-1 {
-    0% { transform: rotate(360deg) translate(100px) rotate(0deg); }
-    100% { transform: rotate(360deg) translate(30px) rotate(-360deg); }
+    0% { transform: rotate(0deg) translate(600px) rotate(0deg); }
+    100% { transform: rotate(360deg) translate(100px) rotate(-360deg); }
 }
 
 @keyframes fly-move-4 {
-   0% { transform: rotate(360deg) translate(20px) rotate(-360deg); }
-    100% { transform: rotate(0deg) translate(20px) rotate(0deg); }
+   0% { transform: rotate(360deg) translate(400px) rotate(-360deg); } /* 반경 20px -> 400px */
+    100% { transform: rotate(0deg) translate(400px) rotate(0deg); }
 }
 
 .fly:nth-child(5) { 
@@ -132,46 +132,45 @@
 
 @keyframes fly-straight-long {
     0% { transform: translate(0, 0); }
-    100% { transform: translate(300px, -250px); }
-}
+    100% { transform: translate(1000px, -800px); } }
 
 @keyframes fly-dash {
     0% { transform: translate(0, 0); }
-    100% { transform: translate(-400px, 100px); }
+    100% { transform: translate(-1200px, 400px); } 
 }
 
 @keyframes fly-curve-huge {
-    0% { transform: rotate(0deg) translate(150px) rotate(0deg); }
-    100% { transform: rotate(360deg) translate(150px) rotate(-360deg); }
+    0% { transform: rotate(0deg) translate(400px) rotate(0deg); } 
+    100% { transform: rotate(360deg) translate(400px) rotate(-360deg); }
 }
 
 @keyframes fly-swoop {
     0% { transform: translate(0px, 0px); }
-    25% { transform: translate(150px, -100px); }
-    50% { transform: translate(300px, 0px); }
-    75% { transform: translate(150px, 100px); }
+    25% { transform: translate(300px, -250px); }
+    50% { transform: translate(600px, 0px); }
+    75% { transform: translate(300px, 250px); }
     100% { transform: translate(0px, 0px); }
 }
 
 @keyframes fly-circle-tight {
-    0% { transform: rotate(0deg) translate(15px) rotate(0deg); }
-    100% { transform: rotate(360deg) translate(15px) rotate(-360deg); }
+    0% { transform: rotate(0deg) translate(80px) rotate(0deg); } 
+    100% { transform: rotate(360deg) translate(80px) rotate(-360deg); }
 }
 
 @keyframes fly-zigzag {
     0% { transform: translate(0px, 0px); }
-    20% { transform: translate(40px, -50px); }
-    40% { transform: translate(-20px, -80px); }
-    60% { transform: translate(50px, -110px); }
-    80% { transform: translate(-30px, -40px); }
+    20% { transform: translate(150px, -150px); }
+    40% { transform: translate(-80px, -300px); }
+    60% { transform: translate(200px, -450px); }
+    80% { transform: translate(-100px, -150px); }
     100% { transform: translate(0px, 0px); }
 }
 
 .question {
   position: absolute;
-  top: 34%;   
-  left: 18%;  
-  width: 100px; 
+  top: 9%;   
+  left: 17.4%;  
+  width: 7%; 
   transform: translate(-50%, -50%); 
   transition: transform 0.1s ease;
   cursor: pointer; 
@@ -180,3 +179,373 @@
 .question:hover {
   transform: translate(-50%, -50%) scale(1.1); 
 }
+
+@keyframes spin-in-place {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.leye {
+  position: absolute;
+  top: 85.6%;   
+  left: 45.5%;  
+  width: 2.8%; 
+  transform: translate(-50%, -50%); 
+  transition: transform 0.1s ease;
+  cursor: pointer; 
+  animation: spin-in-place 5s infinite linear;
+  pointer-events: none;
+  transition: transform 0.1s ease, scale 0.1s ease;
+}
+
+.reye {
+  position: absolute;
+  top: 85.6%;   
+  left: 52.5%;  
+  width: 2.8%; 
+  transform: translate(-50%, -50%); 
+  transition: transform 0.1s ease;
+  cursor: pointer; 
+  animation: spin-in-place 5s infinite linear;
+  pointer-events: none;
+  transition: transform 0.1s ease, scale 0.1s ease;
+}
+
+.book {
+  position: absolute;
+  top: 89%;   
+  left: 50%;  
+  width: 13.5%; 
+  transform: translate(-50%, -50%); 
+  transition: transform 0.1s ease;
+  cursor: pointer; 
+}
+
+.book:hover {
+  transform: translate(-50%, -50%) scale(1.1); 
+}
+
+.dragon {
+  position: absolute;
+  top: 61.5%;   
+  left: 80.4%;  
+  width: 11%; 
+  transform: translate(-50%, -50%); 
+  transition: transform 0.1s ease;
+  cursor: pointer; 
+}
+
+.dragon:hover {
+  transform: translate(-50%, -50%) scale(1.1); 
+}
+
+.plant {
+  position: absolute;
+  top: 34.3%;   
+  left: 80.7%;  
+  width: 10%; 
+  transform: translate(-50%, -50%); 
+  transition: transform 0.1s ease;
+  cursor: pointer; 
+}
+
+.plant:hover {
+  transform: translate(-50%, -50%) scale(1.1); 
+}
+
+.error-window {
+  position: fixed; 
+  width: 280px; 
+  z-index: 10000;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+  pointer-events: none;
+}
+
+.book:hover ~ .leye,
+.book:hover ~ .reye {
+  scale: 1.1; 
+}
+
+.camo-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  overflow: hidden;
+  animation: fadeInOut 8s forwards ease-in-out;
+}
+
+.camo-blob {
+  position: absolute;
+  width: 70vw; 
+  height: 70vh;
+  filter: blur(40px); 
+  mix-blend-mode: multiply; 
+  opacity: 0.9;
+  
+  animation: 
+    blob-wobble 4s infinite alternate ease-in-out,
+    camo-drift 6s infinite alternate ease-in-out;
+}
+
+@keyframes camo-drift {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  50% { transform: translate(5%, 10%) scale(1.1) rotate(5deg); }
+  100% { transform: translate(-5%, -10%) scale(0.9) rotate(-5deg); }
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.blood-scene {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.blood-mass {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw; height: 200vh;
+    filter: url('#goo'); 
+    opacity: 0.8;
+    animation: flowDown 2.5s ease-in forwards; 
+}
+
+.blood-blob {
+    position: absolute;
+    background-color: #550a0a;
+    border-radius: 50%; 
+    animation: bob 2s infinite alternate ease-in-out;
+}
+
+.blood-drip {
+    position: absolute;
+    background-color: #6c1515;
+    border-radius: 50px; 
+    transform-origin: top center;
+    animation: stretchDown 2s ease-in forwards; 
+}
+
+@keyframes flowDown {
+    0% { transform: translateY(-120vh); }
+    15% { transform: translateY(-90vh); } 
+    100% { transform: translateY(120vh); }
+}
+
+@keyframes bob {
+    from { transform: translateY(0) scale(1); }
+    to { transform: translateY(3vh) scale(1.1); }
+}
+
+@keyframes stretchDown {
+    0% { height: 5vh; }
+    100% { height: var(--max-h); }
+}
+
+.fish {
+  position: absolute;
+  top: 10%;   
+  left: 80.4%;  
+  width: 11%; 
+  transform: translate(-50%, -50%); 
+  transition: transform 0.1s ease;
+  cursor: pointer; 
+}
+
+.fish:hover {
+  transform: translate(-50%, -50%) scale(1.1); 
+}
+
+.sparkle-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0;
+    overflow: hidden;
+    animation: sparkleFade 7s forwards;
+}
+
+@keyframes sparkleFade {
+    0% { opacity: 0; }
+    15% { opacity: 0.6; }
+    85% { opacity: 0.6; }
+    100% { opacity: 0; }
+}
+
+
+.sparkle {
+    position: absolute;
+    background-color: #ffd700;
+    border-radius: 60%;
+    box-shadow: 0 0 12px 5px rgba(255, 255, 255, 0.8);
+    animation: twinkle var(--twinkle-duration) infinite ease-in-out var(--twinkle-delay);
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.3); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+.snake {
+  position: absolute;
+  top: 34.8%;   
+  left: 17.4%;  
+  width: 11%; 
+  transform: translate(-50%, -50%); 
+  transition: transform 0.1s ease;
+  cursor: pointer; 
+}
+
+.snake:hover {
+  transform: translate(-50%, -50%) scale(1.1); 
+}
+
+#thermal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    pointer-events: none;
+    display: none;
+    opacity: 0;
+    backdrop-filter: url(#thermal-lookup) contrast(1.2) brightness(1.1);
+    -webkit-backdrop-filter: url(#thermal-lookup) contrast(1.2) brightness(1.1);
+    transition: opacity 0.5s ease;
+}
+
+#thermal-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+#book-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    cursor: pointer;
+}
+
+.book-content {
+    position: relative;
+    max-width: 65%;
+    max-height: 100%;
+    cursor: default; 
+}
+
+.book-frame {
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 0 50px rgba(0,0,0,1);
+    border-radius: 10px;
+}
+
+.no-click {
+    pointer-events: none;
+}
+
+.drunk-spin {
+    filter: url(#drunk-vortex); 
+    pointer-events: none;
+}
+
+@keyframes gentle-shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    100% { transform: translate(-1px, -1px) rotate(0.5deg); }
+}
+
+.drunk-spin {
+    filter: url(#drunk-vortex); 
+    transform: scale(1.1); 
+    transition: transform 0.5s ease-out;
+    pointer-events: none;
+}
+
+
+.drunk-spin {
+    filter: url(#drunk-vortex); 
+    transform: scale(1.1);
+    transition: transform 0.5s ease-out;
+    pointer-events: none;
+}
+
+#blackout-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    z-index: 20000;
+    display: none;
+    pointer-events: none;
+}
+
+#blackout-overlay.active {
+    display: block;
+    animation: blackout-blink 6s ease-in-out forwards;
+}
+
+@keyframes blackout-blink {
+    0% { opacity: 0; }
+    20% { opacity: 0.9; } 
+    35% { opacity: 0.2; }  
+    55% { opacity: 0.95; } 
+    70% { opacity: 0.4; }  
+    85% { opacity: 1; }    
+    100% { opacity: 1; }
+}
+
+
+.drunk-spin {
+    filter: url(#drunk-vortex); 
+    transform: scale(1.1); 
+    transition: transform 0.5s ease-out;
+    pointer-events: none;
+}
+
+.토 {
+  position: absolute;
+  top: 82%;   
+  left: 40%;  
+  width: 5%; 
+  transform: translate(-50%, -50%); 
+  transition: transform 0.1s ease;
+  cursor: pointer; 
+}
+
+.토:hover {
+  transform: translate(-50%, -50%) scale(1.1); 
+}
+
+body {
+    background-color: black;
+    margin: 0;
+    overflow: hidden;
+}
+
+

@@ -11,8 +11,23 @@
 
   <img src="frog.svg" alt="효과 개구리" class="frog" draggable="false" onclick="startflyeffect()">
 
-  <img src="question.svg" alt="???" class="question" draggable="false">
+  <img src="question.svg" alt="???" class="question" draggable="false" onclick="startErrorMeme()">
 
+  <img src="레시피북.svg" alt="레시피북" class="book" draggable="false" onclick="openBook()">
+
+  <img src="만드레이크.svg" alt="만드레이크" class="plant" draggable="false" onclick="startCamoEffect()">
+
+  <img src="창자.svg" alt="창자" class="dragon" draggable="false" onclick="startBloodEffect()" style="cursor: pointer ;">
+
+  <img src="왼쪽 눈.svg" alt="왼눈" class="leye" draggable="false">
+
+  <img src="오른쪽 눈.svg" alt="오른눈" class="reye" draggable="false">
+
+  <img src="인어.svg" alt="인어" class="fish" draggable="false" onclick="startSparkleEffect()" style="cursor: pointer;">
+
+  <img src="뱀.svg" alt="뱀" class="snake" draggable="false" onclick="startSnakeEffect()" style="cursor: pointer;">
+
+  <img src="토.svg" alt="토" class="토" draggable="false" onclick="startBlackoutEffect()" style="cursor: pointer;">
 </div>
 
 <div id="fly-overlay">
@@ -28,13 +43,348 @@
   <div class="fly"></div>
 </div>
 
+<svg style="position: absolute; width: 0; height: 0;">
+  <defs>
+    <filter id="thermal-lookup">
+      <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0 0.33 0.33 0.33 0 0 0.33 0.33 0.33 0 0 0 0 0 1 0"/>
+      <feComponentTransfer>
+        <feFuncR type="table" tableValues="0 0 0 1 1"/>
+        <feFuncG type="table" tableValues="0 0.5 1 1 0"/>
+        <feFuncB type="table" tableValues="0.5 1 0.5 0 0"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+</svg>
+
+<div id="thermal-overlay"></div>
+
+<div id="book-modal" onclick="closeBook(event)">
+    <div class="book-content">
+        <img src="book.png" alt="레시피 북" class="book-frame">
+        </div>
+</div>
+
+<svg style="position: absolute; width: 0; height: 0;">
+  <defs>
+    <filter id="drunk-vortex">
+      <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="3" result="noise">
+        <animate attributeName="baseFrequency" dur="5s" values="0.01;0.015;0.01" repeatCount="indefinite" />
+      </feTurbulence>
+      
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="50" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </defs>
+</svg>
+
+<div id="blackout-overlay"></div>
+
 <script>
+let highestZIndex = 1000;
+
 function startflyeffect() {
-    const overlay = document.getElementById('fly-overlay');
-    overlay.classList.add('active');
+    highestZIndex++; 
+    
+    const originalOverlay = document.getElementById('fly-overlay');
+    const cloneOverlay = originalOverlay.cloneNode(true); 
+    
+    cloneOverlay.id = '';
+    cloneOverlay.style.position = 'fixed';
+    cloneOverlay.style.top = '0';
+    cloneOverlay.style.left = '0';
+    cloneOverlay.style.width = '100vw';
+    cloneOverlay.style.height = '100vh';
+    cloneOverlay.style.background = 'rgba(0, 0, 0, 0.7)';
+    cloneOverlay.style.pointerEvents = 'none'; 
+    cloneOverlay.style.zIndex = highestZIndex; 
+    cloneOverlay.style.display = 'block'; 
+
+    const flies = cloneOverlay.querySelectorAll('.fly');
+    flies.forEach(fly => {
+        const delay = (Math.random() * 5).toFixed(2);
+        const duration = (Math.random() * 3 + 2).toFixed(2);
+        const scaleSize = (Math.random() * 0.7 + 0.5).toFixed(2);
+
+        fly.style.setProperty('animation-delay', `-${delay}s`, 'important');
+        fly.style.setProperty('animation-duration', `${duration}s`, 'important');
+        fly.style.setProperty('scale', scaleSize, 'important');
+    });
+    
+    document.body.appendChild(cloneOverlay);
     setTimeout(() => {
-        overlay.classList.remove('active');
+        cloneOverlay.remove();
     }, 4000);
+}
+
+function startErrorMeme() {
+  highestZIndex++; 
+  const currentBatchZIndex = highestZIndex;
+  
+  let count = 0; 
+  
+  const popupInterval = setInterval(() => {
+    
+    const errorImg = document.createElement('img');
+    errorImg.src = '에러.svg'; 
+    errorImg.className = 'error-window'; 
+    
+    
+    errorImg.style.zIndex = currentBatchZIndex; 
+    
+    const randomX = Math.random() * (window.innerWidth - 300); 
+    const randomY = Math.random() * (window.innerHeight - 200); 
+    
+    errorImg.style.left = randomX + 'px'; 
+    errorImg.style.top = randomY + 'px';
+    
+    document.body.appendChild(errorImg);
+    count++; 
+    
+    if (count > 100) { 
+      clearInterval(popupInterval); 
+      
+      setTimeout(() => {
+        const allErrors = document.querySelectorAll('.error-window');
+        allErrors.forEach(error => error.remove());
+      }, 1000);
+    } 
+    
+  }, 50); 
+}
+
+function startCamoEffect() {
+    highestZIndex++; 
+  
+    const overlay = document.createElement('div');
+    overlay.className = 'camo-overlay';
+    overlay.style.zIndex = highestZIndex;
+    
+    const camoColors = [
+        'rgba(15, 32, 67, 0.4)',   /
+        'rgba(28, 63, 119, 0.4)',  
+        'rgba(41, 105, 176, 0.4)', 
+        'rgba(12, 45, 72, 0.4)',   
+        'rgba(25, 55, 109, 0.4)'   
+    ];
+    
+    for (let i = 0; i < 13; i++) {
+        const blob = document.createElement('div');
+        blob.className = 'camo-blob';
+        blob.style.backgroundColor = camoColors[i % camoColors.length];
+        
+        blob.style.left = (Math.random() * 120 - 20) + 'vw';
+        blob.style.top = (Math.random() * 120 - 20) + 'vh';
+        
+        blob.style.animationDelay = (Math.random() * -5) + 's';
+        
+        overlay.appendChild(blob);
+    }
+    
+    document.body.appendChild(overlay);
+    
+   
+    setTimeout(() => {
+        overlay.remove();
+    }, 8000);
+}
+
+
+function startBloodEffect() {
+    if (!document.getElementById('goo-filter-svg')) {
+        const svgStr = `
+        <svg id="goo-filter-svg" style="display:none;">
+            <defs>
+                <filter id="goo">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="15" result="blur" />
+                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 25 -10" result="goo" />
+                    <feBlend in="SourceGraphic" in2="goo" />
+                </filter>
+            </defs>
+        </svg>`;
+        document.body.insertAdjacentHTML('beforeend', svgStr);
+    }
+
+    highestZIndex++; 
+
+    const scene = document.createElement('div');
+    scene.className = 'blood-scene';
+    scene.style.zIndex = highestZIndex;
+
+    const mass = document.createElement('div');
+    mass.className = 'blood-mass';
+
+    for (let i = 0; i < 25; i++) {
+        const blob = document.createElement('div');
+        blob.className = 'blood-blob';
+        
+        const size = Math.random() * 6 + 4; 
+        blob.style.width = size + 'vw';
+        blob.style.height = size + 'vw'; 
+        blob.style.left = (Math.random() * 120 - 10) + 'vw';
+        blob.style.top = -(Math.random() * 15) + 'vh'; 
+        
+        blob.style.animationDuration = `${Math.random() * 1.5 + 1}s`; 
+        
+        mass.appendChild(blob);
+    }
+
+    for(let i = 0; i < 35; i++) {
+        const drip = document.createElement('div');
+        drip.className = 'blood-drip';
+
+        const w = Math.random() * 3 + 1.5; 
+        drip.style.width = w + 'vw';
+        drip.style.left = (Math.random() * 105 - 5) + 'vw';
+        drip.style.top = (Math.random() * 15 - 5) + 'vh'; 
+
+        const maxH = Math.random() * 60 + 30; 
+        drip.style.setProperty('--max-h', maxH + 'vh');
+
+        mass.appendChild(drip);
+    }
+
+    scene.appendChild(mass);
+    document.body.appendChild(scene);
+
+    setTimeout(() => {
+        if(document.body.contains(scene)) {
+            scene.remove();
+        }
+    }, 3000);
+}
+//인어
+function startSparkleEffect() {
+    highestZIndex++;
+
+    const overlay = document.createElement('div');
+    overlay.className = 'sparkle-overlay';
+    overlay.style.zIndex = highestZIndex;
+
+    for (let i = 0; i < 100; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+
+        const size = Math.random() * 3 + 3.5;
+        sparkle.style.width = `${size}px`;
+        sparkle.style.height = `${size}px`;
+
+        sparkle.style.left = `${Math.random() * 100}vw`;
+        sparkle.style.top = `${Math.random() * 100}vh`;
+
+        const duration = Math.random() * 2 + 1; 
+        const delay = Math.random() * 3;
+        
+        sparkle.style.setProperty('--twinkle-duration', `${duration}s`);
+        sparkle.style.setProperty('--twinkle-delay', `${delay}s`);
+
+        overlay.appendChild(sparkle);
+    }
+
+    document.body.appendChild(overlay);
+
+    setTimeout(() => {
+        if (document.body.contains(overlay)) {
+            overlay.remove();
+        }
+    }, 7000);
+}
+
+function startSnakeEffect() {
+    const overlay = document.getElementById('thermal-overlay');
+    
+    if (overlay) {
+        if (overlay.thermalTimeout) {
+            clearTimeout(overlay.thermalTimeout);
+        }
+        
+       
+        overlay.classList.add('active');
+
+       
+        overlay.thermalTimeout = setTimeout(() => {
+            overlay.classList.remove('active');
+            setTimeout(() => {
+                if (!overlay.classList.contains('active')) {
+                    overlay.style.display = 'none';
+                }
+            }, 500); 
+        }, 4000);
+    }
+
+    for (let s = 0; s < 3; s++) {
+        highestZIndex++;
+        
+        const canvas = document.createElement('canvas');
+        canvas.className = 'snake-canvas';
+        canvas.style.zIndex = Math.min(highestZIndex, 9998); 
+        document.body.appendChild(canvas);
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+}
+
+function startSnakeEffect() {
+    const overlay = document.getElementById('thermal-overlay');
+    
+    if (!overlay) return;
+
+    overlay.style.display = 'block';
+    
+    setTimeout(() => {
+        overlay.classList.add('active');
+    }, 10);
+    
+    if (overlay.thermalTimer) clearTimeout(overlay.thermalTimer);
+    
+    overlay.thermalTimer = setTimeout(() => {
+        overlay.classList.remove('active');
+        
+        
+        setTimeout(() => {
+            if (!overlay.classList.contains('active')) {
+                overlay.style.display = 'none';
+            }
+        }, 500);
+    }, 4000);
+}
+
+function openBook() {
+    const modal = document.getElementById('book-modal');
+    modal.style.display = 'flex';
+    
+    document.querySelector('.image-container').classList.add('no-click');
+}
+
+
+function closeBook(event) {
+
+    if (event.target.id === 'book-modal') {
+        const modal = document.getElementById('book-modal');
+        modal.style.display = 'none';
+        
+        document.querySelector('.image-container').classList.remove('no-click');
+    }
+}
+
+function startBlackoutEffect() {
+    const bgContainer = document.querySelector('.image-container');
+    if (bgContainer.classList.contains('drunk-spin')) return;
+  
+    if(bgContainer) {
+        bgContainer.classList.add('drunk-spin');
+    }
+    
+    const blackoutOverlay = document.getElementById('blackout-overlay');
+    if(blackoutOverlay) {
+    
+        blackoutOverlay.classList.remove('active');
+        void blackoutOverlay.offsetWidth; 
+        blackoutOverlay.classList.add('active');
+    }
+
+    setTimeout(() => {
+        window.location.href = "index.html"; 
+    }, 10000); 
 }
 </script>
 </body>
