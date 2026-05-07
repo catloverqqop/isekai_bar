@@ -4,6 +4,32 @@
     <meta charset="UTF-8">
     <title>주점</title>
     <link rel="stylesheet" href="main.css">
+<script>
+    function startsnakeeffect() {
+    const overlay = document.getElementById('thermal-overlay');
+    if (!overlay) return;
+
+    overlay.style.display = 'block';
+    
+     setTimeout(() => {
+        overlay.classList.add('active');
+    }, 10);
+
+       if (overlay.thermalTimer) {
+        clearTimeout(overlay.thermalTimer);
+    }
+
+        overlay.thermalTimer = setTimeout(() => {
+        overlay.classList.remove('active');
+        
+            setTimeout(() => {
+            if (!overlay.classList.contains('active')) {
+                overlay.style.display = 'none';
+            }
+        }, 500);
+    }, 4000);
+}
+</script>
 </head>
 
 <body>
@@ -288,30 +314,6 @@ function startsparkleeffect() {
     }, 7000);
 }
 
-function startsnakeeffect() {
-    const overlay = document.getElementById('thermal-overlay');
-    if (!overlay) return;
-
-    overlay.style.display = 'block';
-    
-     setTimeout(() => {
-        overlay.classList.add('active');
-    }, 10);
-
-       if (overlay.thermalTimer) {
-        clearTimeout(overlay.thermalTimer);
-    }
-
-        overlay.thermalTimer = setTimeout(() => {
-        overlay.classList.remove('active');
-        
-            setTimeout(() => {
-            if (!overlay.classList.contains('active')) {
-                overlay.style.display = 'none';
-            }
-        }, 500);
-    }, 4000);
-}
 
 function openbook() {
     const modal = document.getElementById('book-modal');
