@@ -18,7 +18,7 @@
 
   <img src="만드레이크.svg" alt="만드레이크" class="plant" draggable="false" onclick="startcamoeffect()">
 
-  <img src="창자.svg" alt="창자" class="dragon" draggable="false" onclick="startbloodwffect()" style="cursor: pointer ;">
+  <img src="창자.svg" alt="창자" class="dragon" draggable="false" onclick="startbloodeffect()" style="cursor: pointer ;">
 
   <img src="왼쪽 눈.svg" alt="왼눈" class="leye" draggable="false">
 
@@ -28,7 +28,7 @@
 
   <img src="뱀.svg" alt="뱀" class="snake" draggable="false" onclick="startsnakeeffect()" style="cursor: pointer;">
 
-  <img src="토.svg" alt="토" class="토" draggable="false" onclick="startblackouteffect()" style="cursor: pointer;">
+  <img src="토.svg" alt="토" class="vomit" draggable="false" onclick="startblackouteffect()" style="cursor: pointer;">
 </div>
 
 <div id="fly-overlay">
@@ -252,7 +252,6 @@ function startbloodeffect() {
         }
     }, 3000);
 }
-//인어
 function startsparkleeffect() {
     highestZIndex++;
 
@@ -383,7 +382,7 @@ function startblackouteffect() {
         blackoutOverlay.classList.add('active');
     }
 
-    settimeout(() => {
+    setTimeout(() => {
         window.location.href = "index.html"; 
     }, 10000); 
 }
