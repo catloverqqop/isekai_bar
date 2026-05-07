@@ -528,7 +528,7 @@
     pointer-events: none;
 }
 
-.vomit {
+.vo {
   position: absolute;
   top: 82%;   
   left: 40%;  
@@ -538,7 +538,7 @@
   cursor: pointer; 
 }
 
-.vomit:hover {
+.vo:hover {
   transform: translate(-50%, -50%) scale(1.1); 
 }
 
