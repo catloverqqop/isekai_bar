@@ -12,23 +12,23 @@
 
   <img src="frog.svg" alt="효과 개구리" class="frog" draggable="false" onclick="startflyeffect()">
 
-  <img src="question.svg" alt="???" class="question" draggable="false" onclick="startErrorMeme()">
+  <img src="question.svg" alt="???" class="question" draggable="false" onclick="starterrormeme()">
 
-  <img src="레시피북.svg" alt="레시피북" class="book" draggable="false" onclick="openBook()">
+  <img src="레시피북.svg" alt="레시피북" class="book" draggable="false" onclick="openbook()">
 
-  <img src="만드레이크.svg" alt="만드레이크" class="plant" draggable="false" onclick="startCamoEffect()">
+  <img src="만드레이크.svg" alt="만드레이크" class="plant" draggable="false" onclick="startcamoeffect()">
 
-  <img src="창자.svg" alt="창자" class="dragon" draggable="false" onclick="startBloodEffect()" style="cursor: pointer ;">
+  <img src="창자.svg" alt="창자" class="dragon" draggable="false" onclick="startbloodwffect()" style="cursor: pointer ;">
 
   <img src="왼쪽 눈.svg" alt="왼눈" class="leye" draggable="false">
 
   <img src="오른쪽 눈.svg" alt="오른눈" class="reye" draggable="false">
 
-  <img src="인어.svg" alt="인어" class="fish" draggable="false" onclick="startSparkleEffect()" style="cursor: pointer;">
+  <img src="인어.svg" alt="인어" class="fish" draggable="false" onclick="startsparkleeffect()" style="cursor: pointer;">
 
-  <img src="뱀.svg" alt="뱀" class="snake" draggable="false" onclick="startSnakeEffect()" style="cursor: pointer;">
+  <img src="뱀.svg" alt="뱀" class="snake" draggable="false" onclick="startsnakeeffect()" style="cursor: pointer;">
 
-  <img src="토.svg" alt="토" class="토" draggable="false" onclick="startBlackoutEffect()" style="cursor: pointer;">
+  <img src="토.svg" alt="토" class="토" draggable="false" onclick="startblackouteffect()" style="cursor: pointer;">
 </div>
 
 <div id="fly-overlay">
@@ -59,7 +59,7 @@
 
 <div id="thermal-overlay"></div>
 
-<div id="book-modal" onclick="closeBook(event)">
+<div id="book-modal" onclick="closebook(event)">
     <div class="book-content">
         <img src="book.png" alt="레시피 북" class="book-frame">
         </div>
@@ -116,7 +116,7 @@ function startflyeffect() {
     }, 4000);
 }
 
-function startErrorMeme() {
+function starterrormeme() {
   highestZIndex++; 
   const currentBatchZIndex = highestZIndex;
   
@@ -152,7 +152,7 @@ function startErrorMeme() {
   }, 50); 
 }
 
-function startCamoEffect() {
+function startcamoeffect() {
     highestZIndex++; 
   
     const overlay = document.createElement('div');
@@ -160,7 +160,7 @@ function startCamoEffect() {
     overlay.style.zIndex = highestZIndex;
     
     const camoColors = [
-        'rgba(15, 32, 67, 0.4)',
+        'rgba(15, 32, 67, 0.4)', 
         'rgba(28, 63, 119, 0.4)',  
         'rgba(41, 105, 176, 0.4)', 
         'rgba(12, 45, 72, 0.4)',   
@@ -189,7 +189,7 @@ function startCamoEffect() {
 }
 
 
-function startBloodEffect() {
+function startbloodeffect() {
     if (!document.getElementById('goo-filter-svg')) {
         const svgStr = `
         <svg id="goo-filter-svg" style="display:none;">
@@ -253,7 +253,7 @@ function startBloodEffect() {
     }, 3000);
 }
 //인어
-function startSparkleEffect() {
+function startsparkleeffect() {
     highestZIndex++;
 
     const overlay = document.createElement('div');
@@ -289,7 +289,7 @@ function startSparkleEffect() {
     }, 7000);
 }
 
-function startSnakeEffect() {
+function startsnakeeffect() {
     const overlay = document.getElementById('thermal-overlay');
     
     if (overlay) {
@@ -324,7 +324,7 @@ function startSnakeEffect() {
     }
 }
 
-function startSnakeEffect() {
+function startsnakeeffect() {
     const overlay = document.getElementById('thermal-overlay');
     
     if (!overlay) return;
@@ -349,7 +349,7 @@ function startSnakeEffect() {
     }, 4000);
 }
 
-function openBook() {
+function openbook() {
     const modal = document.getElementById('book-modal');
     modal.style.display = 'flex';
     
@@ -357,7 +357,7 @@ function openBook() {
 }
 
 
-function closeBook(event) {
+function closebook(event) {
 
     if (event.target.id === 'book-modal') {
         const modal = document.getElementById('book-modal');
@@ -367,7 +367,7 @@ function closeBook(event) {
     }
 }
 
-function startBlackoutEffect() {
+function startblackouteffect() {
     const bgContainer = document.querySelector('.image-container');
     if (bgContainer.classList.contains('drunk-spin')) return;
   
@@ -383,7 +383,7 @@ function startBlackoutEffect() {
         blackoutOverlay.classList.add('active');
     }
 
-    setTimeout(() => {
+    settimeout(() => {
         window.location.href = "index.html"; 
     }, 10000); 
 }
