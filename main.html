@@ -288,59 +288,24 @@ function startsparkleeffect() {
     }, 7000);
 }
 
-function startsnakeeffect() {
+function startSnakeEffect() {
     const overlay = document.getElementById('thermal-overlay');
-    
-    if (overlay) {
-        if (overlay.thermalTimeout) {
-            clearTimeout(overlay.thermalTimeout);
-        }
-        
-       
-        overlay.classList.add('active');
-
-       
-        overlay.thermalTimeout = setTimeout(() => {
-            overlay.classList.remove('active');
-            setTimeout(() => {
-                if (!overlay.classList.contains('active')) {
-                    overlay.style.display = 'none';
-                }
-            }, 500); 
-        }, 4000);
-    }
-
-    for (let s = 0; s < 3; s++) {
-        highestZIndex++;
-        
-        const canvas = document.createElement('canvas');
-        canvas.className = 'snake-canvas';
-        canvas.style.zIndex = Math.min(highestZIndex, 9998); 
-        document.body.appendChild(canvas);
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-}
-
-function startsnakeeffect() {
-    const overlay = document.getElementById('thermal-overlay');
-    
     if (!overlay) return;
 
     overlay.style.display = 'block';
     
-    setTimeout(() => {
+     setTimeout(() => {
         overlay.classList.add('active');
     }, 10);
-    
-    if (overlay.thermalTimer) clearTimeout(overlay.thermalTimer);
-    
-    overlay.thermalTimer = setTimeout(() => {
+
+       if (overlay.thermalTimer) {
+        clearTimeout(overlay.thermalTimer);
+    }
+
+        overlay.thermalTimer = setTimeout(() => {
         overlay.classList.remove('active');
         
-        
-        setTimeout(() => {
+            setTimeout(() => {
             if (!overlay.classList.contains('active')) {
                 overlay.style.display = 'none';
             }
