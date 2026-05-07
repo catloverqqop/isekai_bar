@@ -10,10 +10,16 @@
     if (!overlay) return;
 
     overlay.style.display = 'block';
+
+    void overlay.offsetWidth;
     
+    requestAnimationFrame(() => {
+        overlay.classList.add('active');
+    });
+
      setTimeout(() => {
         overlay.classList.add('active');
-    }, 10);
+    }, 50);
 
        if (overlay.thermalTimer) {
         clearTimeout(overlay.thermalTimer);
