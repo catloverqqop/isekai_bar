@@ -38,29 +38,69 @@
 </script>
 </head>
 
-<body>
 <div class="image-container">
   <img src="beer.jpeg" alt="배경 이미지" class="bg-image" draggable="false">
 
-  <img src="frog.svg" alt="효과 개구리" class="frog" draggable="false" onclick="startflyeffect()">
+  <div class="hover-group frog">
+    <img src="frog.svg" alt="효과 개구리" onclick="startflyeffect()">
+    <div class="desc-layer">
+      <h3 class="title">올챙이 버블티 주</h3>
+      <p class="content">이게 개구리의 시야일까요?</p>
+    </div>
+  </div>
 
-  <img src="question.svg" alt="???" class="question" draggable="false" onclick="starterrormeme()">
+  <div class="hover-group question">
+    <img src="question.svg" alt="???" onclick="starterrormeme()">
+    <div class="desc-layer">
+      <h3 class="title">???</h3>
+      <p class="content">인간의 두개골일까요?</p>
+    </div>
+  </div>
 
-  <img src="레시피북.svg" alt="레시피북" class="book" draggable="false" onclick="openbook()">
+  <img src="레시피북.svg" alt="레시피북" class="book" onclick="openbook()">
 
-  <img src="만드레이크.svg" alt="만드레이크" class="plant" draggable="false" onclick="startcamoeffect()">
+  <div class="hover-group plant">
+    <img src="만드레이크.svg" alt="만드레이크" onclick="startcamoeffect()">
+    <div class="desc-layer">
+      <h3 class="title">비명 주</h3>
+      <p class="content">죽어도 들리는 듯한<br>만드레이크의 비명입니다</p>
+    </div>
+  </div>
 
-  <img src="창자.svg" alt="창자" class="dragon" draggable="false" onclick="startbloodeffect()" style="cursor: pointer ;">
+  <div class="hover-group dragon">
+    <img src="창자.svg" alt="창자" onclick="startbloodeffect()">
+    <div class="desc-layer">
+      <h3 class="title">드래곤 창자 주</h3>
+      <p class="content">드래곤의 피는<br>생각보다 답니다</p>
+    </div>
+  </div>
 
-  <img src="왼쪽 눈.svg" alt="왼눈" class="leye" draggable="false">
+  <img src="왼쪽 눈.svg" alt="왼눈" class="leye">
+  <img src="오른쪽 눈.svg" alt="오른눈" class="reye">
 
-  <img src="오른쪽 눈.svg" alt="오른눈" class="reye" draggable="false">
+  <div class="hover-group fish">
+    <img src="인어.svg" alt="인어" onclick="startsparkleeffect()">
+    <div class="desc-layer">
+      <h3 class="title">진 주</h3>
+      <p class="content">인어의 눈물은<br>비싸고 빛납니다</p>
+    </div>
+  </div>
 
-  <img src="인어.svg" alt="인어" class="fish" draggable="false" onclick="startsparkleeffect()" style="cursor: pointer;">
+  <div class="hover-group snake">
+    <img src="뱀.svg" alt="뱀" onclick="startsnakeeffect()">
+    <div class="desc-layer">
+      <h3 class="title">독사 주</h3>
+      <p class="content">안심하세요!<br>치사량은 아닙니다</p>
+    </div>
+  </div>
 
-  <img src="뱀.svg" alt="뱀" class="snake" draggable="false" onclick="startsnakeeffect()" style="cursor: pointer;">
-
-  <img src="토.svg" alt="토" class="vo" draggable="false" onclick="startblackouteffect()" style="cursor: pointer;">
+  <div class="hover-group vo">
+    <img src="토.svg" alt="토" onclick="startblackouteffect()">
+    <div class="desc-layer">
+      <h3 class="title">누군가가 남긴 잔</h3>
+      <p class="content">마시지 않는게<br>좋아보입니다</p>
+    </div>
+  </div>
 </div>
 
 <div id="fly-overlay">
